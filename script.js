@@ -39,27 +39,6 @@ async function mainEvent() {
   }
 }
 
-async function setupBarChart(data) {
-    const startYear = document.getElementById("start-year").value;
-    const endYear = document.getElementById("end-year").value;
-    
-    if (startYear && endYear && startYear > endYear) {
-      alert("Start year cannot be greater than end year.");
-      document.getElementById("start-year").value = "";
-      document.getElementById("end-year").value = "";
-      return;
-    }
-  
-    const filteredData = filterDataByYear(data, startYear, endYear);
-    const chartData = prepareChartData(filteredData);
-    createBarChart(chartData);
-  }
-
-
-  
-  
-  
-  
   
 
 // Add DOMContentLoaded event listener
