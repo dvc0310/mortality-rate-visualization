@@ -134,7 +134,7 @@ function drawLines(svg, allCausesData, x, y, width, height) {
 
   const line = d3
     .line()
-    .defined((d) => !isNaN(d.deaths)) // Skip data points with NaN value
+    .defined((d) => !isNaN(d.deaths))
     .x((d) => x(d.year))
     .y((d) => y(d.deaths));
 
@@ -150,7 +150,7 @@ function drawLines(svg, allCausesData, x, y, width, height) {
       // Draw dots
       svg
         .selectAll(`.dot-${key}`)
-        .data(values.filter((d) => !isNaN(d.year))) // filter out the data with NaN years
+        .data(values.filter((d) => !isNaN(d.year)))
         .join("circle")
         .attr("class", `dot-${key}`)
         .attr("cx", (d) => x(d.year))
