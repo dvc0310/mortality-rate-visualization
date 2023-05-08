@@ -1,11 +1,8 @@
 export function createBarChart(data, startYear, endYear) {
   const causes = prepareChartData(data, startYear, endYear);
   const chartData = convertToChartData(causes);
+
   console.log(chartData);
-  const labelMapping = {
-    "Chronic Lower Respiratory Diseases": "CLRD",
-  };
-  shortenLabels(chartData, labelMapping);
 
   const aspectRatio = 16 / 9;
   const margin = { top: 20, right: 20, bottom: 100, left: 60 };
@@ -16,11 +13,14 @@ export function createBarChart(data, startYear, endYear) {
   addTitle(svg, width, "Average Death Rate by Cause");
   addYAxisLabel(svg, height, margin, "Average Death Rate");
 
-  const x = d3.scaleBand().domain(chartData.map((d) => d.cause)).range([0, width]).padding(0.2);
-  const y = d3.scaleLinear().domain([0, d3.max(chartData, (d) => d.averageDeathRate)]).range([height, 0]);
+  const x0 = d3.scaleBand().domain(chartData.map((d) => d.cause)).range([0, width]).paddingInner(0.2);
+  const x1 = d3.scaleBand().domain(["Howard County", "Maryland"]).range([0, x0.bandwidth()]).padding(0.05);
+  const y = d3.scaleLinear().domain([0, d3.max(chartData, (d) => Math.max(d.averageDeathRate["Howard County"], d.averageDeathRate["Maryland"]))]).range([height, 0]);
 
-  drawAxis(svg, x, y, width, height);
-  drawBars(svg, chartData, x, y, height);
+  drawAxis(svg, x0, y, width, height);
+  drawDoubleBars(svg, chartData, x0, x1, y, height);
+  drawBarChartLegend(svg, width, margin);
+  
 }
 
 
@@ -83,34 +83,32 @@ function processLineChartData(data, cause) {
   return allCausesData;
 }
 
-
-
 function createLineChartScales(allCausesData, width, height) {
   const x = d3
-  .scaleLinear()
-  .domain(
-    d3.extent(
-      Array.from(allCausesData.values())
-        .flat()
-        .filter((d) => !isNaN(d.deaths)),
-      (d) => d.year
+    .scaleLinear()
+    .domain(
+      d3.extent(
+        Array.from(allCausesData.values())
+          .flat()
+          .filter((d) => !isNaN(d.deaths)),
+        (d) => d.year
+      )
     )
-  )
-  .range([0, width]);
+    .range([0, width]);
 
-const y = d3
-  .scaleLinear()
-  .domain([
-    0,
-    d3.max(
-      Array.from(allCausesData.values())
-        .flat()
-        .filter((d) => !isNaN(d.deaths)),
-      (d) => d.deaths
-    ),
-  ])
-  .range([height, 0]);
-  return {x,y}
+  const y = d3
+    .scaleLinear()
+    .domain([
+      0,
+      d3.max(
+        Array.from(allCausesData.values())
+          .flat()
+          .filter((d) => !isNaN(d.deaths)),
+        (d) => d.deaths
+      ),
+    ])
+    .range([height, 0]);
+  return { x, y }
 }
 
 function drawLineChartAxis(svg, x, y, width, height) {
@@ -134,31 +132,61 @@ function drawLines(svg, allCausesData, x, y, width, height) {
 
   const line = d3
     .line()
-    .defined((d) => !isNaN(d.deaths))
+    .defined((d) => !isNaN(d.deaths)) // Skip data points with NaN value
     .x((d) => x(d.year))
     .y((d) => y(d.deaths));
 
-    allCausesData.forEach((values, key) => {
-      svg
-        .append("path")
-        .datum(values)
-        .attr("fill", "none")
-        .attr("stroke", color(key))
-        .attr("stroke-width", 2)
-        .attr("d", line);
-  
-      // Draw dots
-      svg
-        .selectAll(`.dot-${key}`)
-        .data(values.filter((d) => !isNaN(d.year)))
-        .join("circle")
-        .attr("class", `dot-${key}`)
-        .attr("cx", (d) => x(d.year))
-        .attr("cy", (d) => y(d.deaths))
-        .attr("r", 3.5)
-        .style("fill", color(key));
-    });
+  allCausesData.forEach((values, key) => {
+    svg
+      .append("path")
+      .datum(values)
+      .attr("fill", "none")
+      .attr("stroke", color(key))
+      .attr("stroke-width", 2)
+      .attr("d", line);
+
+    // Draw dots
+    svg
+      .selectAll(`.dot-${key}`)
+      .data(values.filter((d) => !isNaN(d.year))) // filter out the data with NaN years
+      .join("circle")
+      .attr("class", `dot-${key}`)
+      .attr("cx", (d) => x(d.year))
+      .attr("cy", (d) => y(d.deaths))
+      .attr("r", 3.5)
+      .style("fill", color(key));
+  });
 }
+
+function drawBarChartLegend(svg, width, margin) {
+  const jurisdictions = ["Howard County", "Maryland"];
+  const colors = ["#69b3a2", "#407294"];
+
+  const legend = svg
+    .append("g")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", 10)
+    .attr("text-anchor", "end")
+    .selectAll("g")
+    .data(jurisdictions)
+    .join("g")
+    .attr("transform", (d, i) => `translate(0,${i * 20 - 2 * margin.top})`);
+
+  legend
+    .append("rect")
+    .attr("x", width - 19)
+    .attr("width", 19)
+    .attr("height", 10)
+    .attr("fill", (d, i) => colors[i]);
+
+  legend
+    .append("text")
+    .attr("x", width - 24)
+    .attr("y", 4)
+    .attr("dy", "0.32em")
+    .text((d) => d);
+}
+
 
 function drawLegend(svg, allCausesData, width, margin) {
   const color = d3.scaleOrdinal().domain(allCausesData.keys()).range(["steelblue", "orange"]);
@@ -249,60 +277,73 @@ function drawAxis(svg, x, y, width, height) {
   svg.append("g").call(d3.axisLeft(y));
 }
 
-function drawBars(svg, chartData, x, y, height) {
+function drawDoubleBars(svg, chartData, x0, x1, y, height) {
+  const color = d3.scaleOrdinal().domain(["Howard County", "Maryland"]).range(["#69b3a2", "#407294"]);
+
   svg
-    .selectAll(".bar")
+    .append("g")
+    .selectAll("g")
     .data(chartData)
-    .enter()
-    .append("rect")
-    .attr("class", "bar")
-    .attr("x", (d) => x(d.cause))
-    .attr("y", (d) => y(d.averageDeathRate))
-    .attr("width", x.bandwidth())
-    .attr("height", (d) => height - y(d.averageDeathRate))
-    .attr("fill", "#69b3a2")
+    .join("g")
+    .attr("transform", d => `translate(${x0(d.cause)}, 0)`)
+    .selectAll("rect")
+    .data(d => ["Howard County", "Maryland"].map(jurisdiction => ({ jurisdiction, value: d.averageDeathRate[jurisdiction] })))
+    .join("rect")
+    .attr("x", d => x1(d.jurisdiction))
+    .attr("y", d => y(d.value))
+    .attr("width", x1.bandwidth())
+    .attr("height", d => height - y(d.value))
+    .attr("fill", d => color(d.jurisdiction))
     .attr("stroke", "black")
-    .attr("stroke-width", 2);
+    .attr("stroke-width", 1);
 }
 
 function prepareChartData(data, startYear, endYear) {
-  const filtered =  data.reduce((acc, cur) => {
+  const filtered = data.reduce((acc, cur) => {
     const year = +cur.year_of_occurrence.split("-")[1];
     if (cur.cause_of_death == "Nephritis" ||
-    cur.cause_of_death == "COVID-19" || 
-    cur.cause_of_death == "All Causes" || 
-    year < startYear || year > endYear) {
+      cur.cause_of_death == "COVID-19" ||
+      cur.cause_of_death == "All Causes" ||
+      year < startYear || year > endYear) {
       return acc;
     }
     if (!cur.age_adjusted_death_rate || isNaN(+cur.age_adjusted_death_rate)) {
       return acc;
     }
     if (acc[cur.cause_of_death]) {
-      acc[cur.cause_of_death].sum += +cur.age_adjusted_death_rate;
-      acc[cur.cause_of_death].count++;
+      if (acc[cur.cause_of_death].averageDeathRate[cur.jurisdiction]) {
+        acc[cur.cause_of_death].averageDeathRate[cur.jurisdiction].sum += +cur.age_adjusted_death_rate;
+        acc[cur.cause_of_death].averageDeathRate[cur.jurisdiction].count++;
+      } else {
+        acc[cur.cause_of_death].averageDeathRate[cur.jurisdiction] = {
+          sum: +cur.age_adjusted_death_rate,
+          count: 1,
+        };
+      }
     } else {
       acc[cur.cause_of_death] = {
-        sum: +cur.age_adjusted_death_rate,
-        count: 1,
+        averageDeathRate: {
+          [cur.jurisdiction]: {
+            sum: +cur.age_adjusted_death_rate,
+            count: 1,
+          },
+        },
       };
     }
     return acc;
   }, {});
+
   console.log(filtered);
   return filtered;
 }
 
 function convertToChartData(causes) {
-  return Object.entries(causes).map(([cause, { sum, count }]) => ({
+  return Object.entries(causes).map(([cause, { averageDeathRate }]) => ({
     cause,
-    averageDeathRate: sum / count,
+    averageDeathRate: {
+      "Howard County": averageDeathRate["Howard County"].sum / averageDeathRate["Howard County"].count,
+      "Maryland": averageDeathRate["Maryland"].sum / averageDeathRate["Maryland"].count,
+    },
   }));
 }
 
-function shortenLabels(chartData, labelMapping) {
-  chartData.forEach((d) => {
-    if (labelMapping[d.cause]) {
-      d.cause = labelMapping[d.cause];
-    }
-  });
-}
