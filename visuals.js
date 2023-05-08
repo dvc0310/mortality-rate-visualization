@@ -10,7 +10,7 @@ export function createBarChart(data, startYear, endYear) {
   const { containerWidth, containerHeight, width, height } = dimensions;
 
   const svg = createSvg("barchart-container", containerWidth, containerHeight, margin);
-  addTitle(svg, width, "Average Death Rate by Cause");
+  addTitle(svg, width, "\n\n");
   addYAxisLabel(svg, height, margin, "Average Death Rate");
 
   const x0 = d3.scaleBand().domain(chartData.map((d) => d.cause)).range([0, width]).paddingInner(0.2);
@@ -40,7 +40,7 @@ export async function createLineChart(data, cause) {
     .attr("y", -margin.top / 2)
     .attr("text-anchor", "middle")
     .attr("font-size", "16px")
-    .text("Causes of Death By Year");
+    .text("\n\n\n\n");
 
   svg
     .append("text")
@@ -170,7 +170,7 @@ function drawBarChartLegend(svg, width, margin) {
     .selectAll("g")
     .data(jurisdictions)
     .join("g")
-    .attr("transform", (d, i) => `translate(0,${i * 20 - 2 * margin.top})`);
+    .attr("transform", (d, i) => `translate(0,${i * 20 -  margin.top})`);
 
   legend
     .append("rect")
@@ -199,7 +199,7 @@ function drawLegend(svg, allCausesData, width, margin) {
     .selectAll("g")
     .data(Array.from(allCausesData.keys()))
     .join("g")
-    .attr("transform", (d, i) => `translate(0,${i * 20 - 2 * margin.top})`);
+    .attr("transform", (d, i) => `translate(0,${i * 20 - 1 * margin.top})`);
 
   legend
     .append("rect")
@@ -346,4 +346,5 @@ function convertToChartData(causes) {
     },
   }));
 }
+
 
