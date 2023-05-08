@@ -83,11 +83,3 @@ async function mainEvent() {
     
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());
-
-      
-  } catch (error) {
-      console.error("Error fetching data:", error);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', async () => mainEvent());
