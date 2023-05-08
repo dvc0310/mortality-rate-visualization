@@ -160,3 +160,8 @@ header {
     background-color: gray; /* Changes the button's background color to gray */
     cursor: not-allowed; /* Changes the cursor to indicate that the button is not clickable */
 }
+
+h2 {
+    margin: 0 auto;
+    display: table;
+}
