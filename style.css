@@ -31,14 +31,29 @@ body {
 .navbar-title {
     font-size: 1.5rem;
     margin-right: 1rem;
-    color: white; 
+    color: white; /* Set the color for News Aggregator to white */
 }
 
 nav {
     text-align: center;
     size: auto;
 }
-
+nav ul {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+}
+nav li {
+    display: list-item;
+    
+    margin-left: auto;
+    margin-top: 50px;
+}
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 2.8vh;
+}
 header {
     padding: 1rem;
     text-align: center;
@@ -88,6 +103,7 @@ header {
     height: 650px;
 }
 
+
 #scatterplot {
     margin: 2rem;
 }
@@ -109,4 +125,38 @@ header {
 .half-width {
     width: 50%;
     box-sizing: border-box;
+}
+
+.buttons-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+.floating-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+  
+
+.floating-button:hover {
+    transform: scale(1.05);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+  
+.floating-button:disabled {
+    opacity: 0.5; /* Makes the button appear faded */
+    background-color: gray; /* Changes the button's background color to gray */
+    cursor: not-allowed; /* Changes the cursor to indicate that the button is not clickable */
 }
