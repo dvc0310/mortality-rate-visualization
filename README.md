@@ -1,21 +1,44 @@
 # Death Rate Visualization Dashboard
 
-Visit our live dashboard on Github Pages at: https://dvc0310.github.io/leading-death-rate-visualization
+## Table of Contents
 
-# Supported Browsers
+- [Description](#description)
+- [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+- [Usage](#usage)
+- [API Used](#api-used)
+- [Visualizations](#visualizations)
+- [Contribution](#contribution)
+- [License](#license)
 
-The dashboard is primarily designed for Google Chrome.
+## Description
 
-# Documentation
+This project presents an interactive dashboard that visualizes death rates from various causes in Maryland and Howard County. 
 
-All documentation is written in Markdown (*.md) files, ensuring a clear and structured presentation of the information.
+## Getting Started
 
-# Project Description
+### Prerequisites
 
-Our project utilizes the D3.js API to generate two primary visualizations: a line graph and a double bar graph.
+- Google Chrome Browser
 
-Line Graph: This graph displays the death rates for both Howard County and Maryland over a certain time period. It also features a dropdown menu in the top left corner, allowing users to filter by specific causes of death.
+### Installation
 
-Double Bar Graph: This visualization allows a direct comparison of death rates among various causes. It uses two colors to represent different areas; blue for the entirety of Maryland, and green for Howard County. This graph also includes a filtering option, with two dropdown menus representing the start and end years of a time period of interest.
+1. Clone the repo: `git clone https://github.com/dvc0310/leading-death-rate-visualization.git`
+2. Navigate to the project directory
+3. Open `index.html` in Google Chrome
 
-The main goal of our project is to visually present and compare death rates from different causes and regions, providing an intuitive understanding of these complex datasets. The filtering options allow users to customize the visualizations according to their specific interests, facilitating a more personalized data exploration experience.
+## Usage
+
+The dashboard allows users to filter data by time period and cause of death, providing a more personalized exploration of death rate data.
+
+## API Used
+
+This project uses D3.js API for creating visualizations. More about it can be found [here](https://d3js.org/d3.v7.min.js).
+
+## Visualizations
+
+- **Line Graph**: Displays death rates over time for both Howard County and Maryland. Users can filter by cause of death.
+- **Double Bar Graph**: Allows comparison of death rates by cause in Maryland and Howard County. Includes time period filter.
+
+
