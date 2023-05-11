@@ -36,7 +36,7 @@ The dashboard allows users to filter data by time period and cause of death, pro
 
 ## API Used
 
-This project uses D3.js API for creating visualizations. More about it can be found [here](https://d3js.org/d3.v7.min.js).
+This project uses D3.js version 7 API for creating visualizations. More about it can be found [here](https://d3js.org/).
 
 ## Visualizations
 
