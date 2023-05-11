@@ -13,8 +13,6 @@ https://dvc0310.github.io/leading-death-rate-visualization/
 - [Usage](#usage)
 - [API Used](#api-used)
 - [Visualizations](#visualizations)
-- [Contribution](#contribution)
-- [License](#license)
 
 ## Description
 
