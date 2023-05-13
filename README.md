@@ -7,9 +7,7 @@ https://dvc0310.github.io/leading-death-rate-visualization/
 ## Table of Contents
 
 - [Description](#description)
-- [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
+- [Prerequisites](#prerequisites)
 - [Usage](#usage)
 - [API Used](#api-used)
 - [Visualizations](#visualizations)
@@ -18,17 +16,11 @@ https://dvc0310.github.io/leading-death-rate-visualization/
 
 This project presents an interactive dashboard that visualizes death rates from various causes in Maryland and Howard County. 
 
-## Getting Started
 
-### Prerequisites
+## Prerequisites
 
 - Google Chrome Browser
 
-### Installation
-
-1. Clone the repo: `git clone https://github.com/dvc0310/leading-death-rate-visualization.git`
-2. Navigate to the project directory
-3. Open `index.html` in Google Chrome
 
 ## Usage
 
