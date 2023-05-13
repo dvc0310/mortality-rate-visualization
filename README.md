@@ -19,7 +19,7 @@ This project presents an interactive dashboard that visualizes death rates from 
 
 ## Prerequisites
 
-- Google Chrome Browser
+- Any Internet Browser
 
 
 ## Usage
