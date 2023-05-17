@@ -28,7 +28,7 @@ The dashboard allows users to filter data by time period and cause of death, pro
 
 ## API Used
 
-This project uses D3.js version 7 API for creating visualizations. More about it can be found [here](https://d3js.org/).
+This project uses D3.js version 7 API for creating visualizations. More about it can be found [here](https://d3js.org/). I've also used the Howard County Death Rate Dataset from  https://opendata.howardcountymd.gov/Health/Age-Adjusted-Death-Rates-for-Selected-Leading-Caus/j7s2-ynf8
 
 ## Visualizations
 
