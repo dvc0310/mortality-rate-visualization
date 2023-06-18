@@ -68,10 +68,13 @@ header {
     color: white;
     border-top-right-radius: 75px;
 }
+
 #main-content {
     margin-left: 20%;
     padding: 2rem;
+    padding-top: 10%;  /* Add this line */
 }
+
 #barchart {
     margin: 2rem;
 }
