@@ -6,7 +6,7 @@ https://dvc0310.github.io/leading-death-rate-visualization/
 
 ## Table of Contents
 
-- [Description](#description)
+- [About the Site](#about)
 - [Prerequisites](#prerequisites)
 - [Usage](#usage)
 - [API Used](#api-used)
