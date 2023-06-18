@@ -12,9 +12,22 @@ https://dvc0310.github.io/leading-death-rate-visualization/
 - [API Used](#api-used)
 - [Visualizations](#visualizations)
 
-## Description
+## About the Site
+Welcome to the Leading Death Rate Visualization Dashboard!
 
-This project presents an interactive dashboard that visualizes death rates from various causes in Maryland and Howard County. 
+This site serves as an interactive exploration into the mortality rates of various causes of death within Maryland and Howard County. Built as a data visualization project, it aims to provide comprehensive insights into death rate patterns and trends over time.
+
+We utilize data from Howard County's Open Data Portal, focusing specifically on age-adjusted death rates. The visualizations available on this site are crafted using D3.js, a powerful JavaScript library for creating data-driven documents.
+
+The dashboard presents two primary visualizations:
+
+Line Graph: This graph presents a historical view of death rates over time, offering a comparison between Howard County and the wider state of Maryland. You can customize the view based on the cause of death you're interested in.
+
+Double Bar Graph: Here, you can compare death rates by cause in Maryland and Howard County side by side. This view is also adjustable by time period, enabling you to focus on specific years or ranges.
+
+The aim of this site is to foster an understanding of death rate patterns, highlighting the variance between local and state-level data. We believe that by making this data easily accessible and visually engaging, we can support informed discussions and decision-making in our community.
+
+Whether you're a student, a researcher, a policy maker, or simply someone interested in the health landscape of Maryland, we hope this site offers you valuable insights.
 
 
 ## Prerequisites
