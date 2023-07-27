@@ -1,4 +1,4 @@
-import { createBarChart, createLineChart} from "./visuals.js";
+import { createBarChart, createLineChart} from "./visualizations/visuals.js";
 
 async function mainEvent() {
   const url = "https://opendata.howardcountymd.gov/resource/j7s2-ynf8.json";
