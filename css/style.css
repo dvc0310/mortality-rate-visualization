@@ -12,6 +12,7 @@ body {
 #content {
     display: flex;
 }
+
 #sidebar {
     background-color: #343a40;
     width: 20%;
@@ -44,6 +45,7 @@ nav li {
     
     margin-left: auto;
     margin-top: 50px;
+    font-size: 3.1vh;
 }
 nav a {
     text-decoration: none;
