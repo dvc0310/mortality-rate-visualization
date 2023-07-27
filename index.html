@@ -1,108 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Age-Adjusted Death Rates Dashboard</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Age-Adjusted Death Rates Dashboard</h1>
-    </header>
-    <div class="buttons-container">
-        <button id="data_load" class="floating-button">Load Data</button>
-        <button id="data_clear" class="floating-button">Clear Data</button>
-    </div>
-      
-
-    <div id="sidebar">
-        <nav>
-            <ul>
-                <li><a href="#barchart-container">Causes</a></li>
-                <li><a href="#linechart-container">Years</a></li>
-            </ul>
-        </nav>
-    </div>
-    <div id="main-content">
-        <div id="parent">
-            <div id="bar-chart-container">
-              </div>
-              <h2>Average Death Rate by Cause
-              </h2>
-              <div id="time-filter">
-                <label for="start-year">Start Year:</label>
-                    <select id="start-year">
-                    <option value="2005 " selected>2005</option>
-                    <option value="2006">2006</option>
-                    <option value="2007">2007</option>
-                    <option value="2008">2008</option>
-                    <option value="2009">2009</option>
-                    <option value="2010">2010</option>
-                    <option value="2011">2011</option>
-                    <option value="2012">2012</option>
-                    <option value="2013">2013</option>
-                    <option value="2014">2014</option>
-                    <option value="2015">2015</option>
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
-                    </select>
-
-                    <label for="end-year">End Year:</label>
-                    <select id="end-year">
-                    <option value="2005">2005</option>
-                    <option value="2006">2006</option>
-                    <option value="2007">2007</option>
-                    <option value="2008">2008</option>
-                    <option value="2009">2009</option>
-                    <option value="2010">2010</option>
-                    <option value="2011">2011</option>
-                    <option value="2012">2012</option>
-                    <option value="2013">2013</option>
-                    <option value="2014">2014</option>
-                    <option value="2015">2015</option>
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                    <option value="2019">2019</option>
-                    <option value="2020" selected>2020</option>
-                    </select>
-
-                    <button id="update-button">Update Chart</button>
-            </div>
-            
-            <div id="barchart-container">
-            </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Age-Adjusted Death Rates Dashboard</title>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Age-Adjusted Death Rates Dashboard</h1>
+        </header>
+        <div class="buttons-container">
+            <button id="data_load" class="floating-button">Load Data</button>
+            <button id="data_clear" class="floating-button">Clear Data</button>
         </div>
         
-        <div id="parent">
-            <div id="linechart-controls">
-                <select id="cause-selector">
-                    <option value="All Causes">All Causes</option>
-                    <option value="Cancer">Cancer</option>
-                    <option value="Heart Disease">Heart Disease</option>
-                    <option value="Cerebrovascular disease">Cerebrovascular disease</option>
-                    <option value="Chronic Lower Respiratory Diseases">Chronic Lower Respiratory Diseases</option>
-                    <option value="Influenza and Pneumonia">Influenza and Pneumonia</option>
-                    <option value="Accidents">Accidents</option>
-                    <option value="Septicemia">Septicemia</option>
-                    <option value="Alzheimer's">Alzheimer's</option>
-                    <option value="Diabetes">Diabetes</option>
-                    <option value="Suicide">Suicide</option>
-                </select>
-            </div>
-            <h2>Causes of Death by Year</h2>
-            <div id="linechart-container">
+        <div id="content">
+        <div id="sidebar">
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li><a href="./pages/about.html">About This Site</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="main-content">
+            <div id="parent">
+                <div id="bar-chart-container">
+                </div>
+                <h2>Average Death Rate by Cause
+                </h2>
+                <div id="time-filter">
+                    <label for="start-year">Start Year:</label>
+                        <select id="start-year">
+                        <option value="2005 " selected>2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2007">2007</option>
+                        <option value="2008">2008</option>
+                        <option value="2009">2009</option>
+                        <option value="2010">2010</option>
+                        <option value="2011">2011</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        </select>
+
+                        <label for="end-year">End Year:</label>
+                        <select id="end-year">
+                        <option value="2005">2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2007">2007</option>
+                        <option value="2008">2008</option>
+                        <option value="2009">2009</option>
+                        <option value="2010">2010</option>
+                        <option value="2011">2011</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020" selected>2020</option>
+                        </select>
+
+                        <button id="update-button">Update Chart</button>
+                </div>
+                
+                <div id="barchart-container">
+                </div>
             </div>
             
+            <div id="parent">
+                <div id="linechart-controls">
+                    <select id="cause-selector">
+                        <option value="All Causes">All Causes</option>
+                        <option value="Cancer">Cancer</option>
+                        <option value="Heart Disease">Heart Disease</option>
+                        <option value="Cerebrovascular disease">Cerebrovascular disease</option>
+                        <option value="Chronic Lower Respiratory Diseases">Chronic Lower Respiratory Diseases</option>
+                        <option value="Influenza and Pneumonia">Influenza and Pneumonia</option>
+                        <option value="Accidents">Accidents</option>
+                        <option value="Septicemia">Septicemia</option>
+                        <option value="Alzheimer's">Alzheimer's</option>
+                        <option value="Diabetes">Diabetes</option>
+                        <option value="Suicide">Suicide</option>
+                    </select>
+                </div>
+                <h2>Causes of Death by Year</h2>
+                <div id="linechart-container">
+                </div>
+            </div>        
         </div>
-          
-    </div>
-    <script type="module" src="js/script.js"></script>
+            
+        </div>
+        <script type="module" src="js/script.js"></script>
 
-</body>
+    </body>
 </html>

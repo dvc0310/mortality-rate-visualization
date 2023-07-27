@@ -9,29 +9,25 @@ body {
     background-color:#f0e6ff;
 }
 
-
-.navbar {
+#content {
     display: flex;
-    background-color: #333;
-    align-items: center;
-    justify-content: space-between;
+}
+#sidebar {
+    background-color: #343a40;
+    width: 20%;
     padding: 1rem;
-}
-
-.navbar a {
     color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
+    border-top-right-radius: 75px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
 }
 
-.navbar a:hover {
-    background-color: #555;
-}
 
-.navbar-title {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    color: white; /* Set the color for News Aggregator to white */
+#main-content {
+    width: 80%;
+    padding: 2rem;
 }
 
 nav {
@@ -59,20 +55,6 @@ header {
     text-align: center;
 }   
 
-#sidebar {
-    background-color: #343a40;
-    width: 20%;
-    height: 100vh;
-    position: fixed;
-    padding: 1rem;
-    color: white;
-    border-top-right-radius: 75px;
-}
-
-#main-content {
-    margin-left: 20%;
-    padding: 2rem;
-}
 
 #barchart {
     margin: 2rem;
@@ -172,4 +154,4 @@ header {
 h2 {
     margin: 0 auto;
     display: table;
-  }
+}
