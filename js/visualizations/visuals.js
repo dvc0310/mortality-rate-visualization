@@ -1,4 +1,4 @@
-import {processLineChartData, createLineChartScales, prepareChartData, convertToChartData} from "../data_process.js";
+import {processLineChartData, createLineChartScales, prepareChartData, convertToChartData} from "../data_filter.js";
 import {drawLegend, drawLines, drawLineChartAxis} from "./line_chart_visual.js";
 import {drawBarChartLegend, addYAxisLabel, drawAxis, addTitle, drawDoubleBars} from "./bar_chart_visual.js";
 
