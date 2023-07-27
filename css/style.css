@@ -3,7 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
+
 body {
     font-family: 'Alegreya', serif;
     background-color:#f0e6ff;
@@ -126,7 +128,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-  }
+}
   
 .floating-button {
     margin-top: 10px;
