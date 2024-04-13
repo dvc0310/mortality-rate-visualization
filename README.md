@@ -1,8 +1,8 @@
-# Death Rate Visualization Dashboard
+# Mortality Rate Visualization Dashboard
 
 ## Github Pages Link
 
-https://dvc0310.github.io/leading-death-rate-visualization/
+https://dvc0310.github.io/mortality-rate-visualization/
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ https://dvc0310.github.io/leading-death-rate-visualization/
 - [Visualizations](#visualizations)
 
 ## About the Site
-Welcome to the Leading Death Rate Visualization Dashboard!
+Welcome to the Mortality Rate Visualization Dashboard!
 
 This site serves as an interactive exploration into the mortality rates of various causes of death within Maryland and Howard County. Built as a data visualization project, it aims to provide comprehensive insights into death rate patterns and trends over time.
 
