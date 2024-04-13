@@ -2,7 +2,7 @@
 
 ## Github Pages Link
 
-https://dvc0310.github.io/mortality-death-rate-visualization/
+https://dvc0310.github.io/mortality-rate-visualization/
 
 ## Table of Contents
 
